@@ -1,9 +1,24 @@
 import React, {useState} from 'react';
-import {ScrollView, StatusBar, StyleSheet, Text, View} from 'react-native';
+import {
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {useStore} from '../store/store';
 import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
-import {COLORS} from '../theme/theme';
+import {
+  BORDERRADIUS,
+  COLORS,
+  FONTFAMILY,
+  FONTSIZE,
+  SPACING,
+} from '../theme/theme';
 import {HeaderBar} from '../components/HeaderBar';
+import CustomIcon from '../components/CustomIcon';
 
 const getCategoriesFromData = (data: any) => {
   let temp: any = {};
@@ -50,7 +65,34 @@ export default function HomeScreen() {
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.ScrollViewFlex}>
-        <HeaderBar title="COFFEE SHOP" />
+        <HeaderBar title="" />
+        <Text style={styles.ScreenTitle}>
+          Find the best{'\n'}Coffee for you
+        </Text>
+        <View>
+          <TouchableOpacity style={styles.InputContainerComponent}>
+            <CustomIcon
+              style={styles.InputIcon}
+              name="search"
+              size={FONTSIZE.size_18}
+              color={
+                searchText.length > 0
+                  ? COLORS.primaryOrangeHex
+                  : COLORS.primaryLightGreyHex
+              }
+            />
+            <TextInput
+              placeholder="Find Your Coffee..."
+              value={searchText}
+              onChangeText={text => {
+                setSearchText(text);
+                // searchCoffee(text);
+              }}
+              placeholderTextColor={COLORS.primaryLightGreyHex}
+              style={styles.TextInputContainer}
+            />
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </View>
   );
@@ -63,5 +105,28 @@ const styles = StyleSheet.create({
   },
   ScrollViewFlex: {
     flexGrow: 1,
+  },
+  ScreenTitle: {
+    fontSize: SPACING.space_28,
+    fontFamily: FONTFAMILY.poppins_semibold,
+    color: COLORS.primaryWhiteHex,
+    paddingLeft: SPACING.space_30,
+  },
+  InputContainerComponent: {
+    flexDirection: 'row',
+    margin: SPACING.space_30,
+    borderRadius: BORDERRADIUS.radius_20,
+    backgroundColor: COLORS.primaryDarkGreyHex,
+    alignItems: 'center',
+  },
+  InputIcon: {
+    marginHorizontal: SPACING.space_20,
+  },
+  TextInputContainer: {
+    flex: 1,
+    height: SPACING.space_20 * 3,
+    fontFamily: FONTFAMILY.poppins_medium,
+    fontSize: FONTSIZE.size_14,
+    color: COLORS.primaryWhiteHex,
   },
 });
