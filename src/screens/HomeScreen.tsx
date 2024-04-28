@@ -91,7 +91,6 @@ export default function HomeScreen() {
             value={searchText}
             onChangeText={text => {
               setSearchText(text);
-              // searchCoffee(text);
             }}
             placeholderTextColor={COLORS.primaryLightGreyHex}
             style={styles.TextInputContainer}
@@ -100,7 +99,7 @@ export default function HomeScreen() {
         {/* Category list */}
         <ScrollView
           horizontal
-          showsHorizontalScrollIndicator={false}
+          showsHorizontalScrollIndicator={true}
           contentContainerStyle={styles.CategoryScrollViewStyle}>
           {categories.map((item, index) => {
             return (
@@ -190,13 +189,14 @@ const styles = StyleSheet.create({
     marginHorizontal: SPACING.space_20,
   },
   TextInputContainer: {
-    flex: 1,
     height: SPACING.space_20 * 3,
     fontFamily: FONTFAMILY.poppins_medium,
     fontSize: FONTSIZE.size_14,
     color: COLORS.primaryWhiteHex,
   },
-  CategoryScrollViewStyle: {},
+  CategoryScrollViewStyle: {
+    // flexDirection: 'row',
+  },
   SelectedCategoryText: {
     color: COLORS.primaryOrangeHex,
     fontSize: FONTSIZE.size_16,
@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
     color: COLORS.primaryLightGreyHex,
     fontSize: FONTSIZE.size_16,
     fontFamily: FONTFAMILY.poppins_medium,
-    marginBottom: SPACING.space_4,
+    // marginBottom: SPACING.space_4,
   },
   ActiveCategory: {
     height: SPACING.space_10,
@@ -216,13 +216,8 @@ const styles = StyleSheet.create({
   },
   FlatlistContainer: {
     gap: SPACING.space_20,
-    paddingVertical: SPACING.space_20,
-    paddingHorizontal: SPACING.space_30,
+    // paddingVertical: SPACING.space_20,
+    // paddingHorizontal: SPACING.space_30,
   },
   CoffeeItemContainer: {},
-  CoffeeItemTitle: {
-    color: COLORS.primaryLightGreyHex,
-  },
-  CoffeeItemDescription: {},
-  CoffeeItemPrice: {},
 });
