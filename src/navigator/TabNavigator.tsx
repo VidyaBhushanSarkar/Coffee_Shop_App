@@ -93,7 +93,7 @@ export default function TabNavigator() {
 
 const styles = StyleSheet.create({
   tabBarStyle: {
-    height: 80,
+    height: 70,
     position: 'absolute',
     backgroundColor: COLORS.primaryBlackRGBA,
     borderTopColor: 'transperant',
@@ -101,6 +101,7 @@ const styles = StyleSheet.create({
     elevation: 0,
   },
   BlurViewStyle: {
+    position: 'absolute',
     top: 0,
     bottom: 0,
     left: 0,
