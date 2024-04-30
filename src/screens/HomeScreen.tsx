@@ -218,7 +218,10 @@ export default function HomeScreen() {
           horizontal
           showsHorizontalScrollIndicator={false}
           data={BeansList}
-          contentContainerStyle={[styles.FlatlistContainer]}
+          contentContainerStyle={[
+            styles.FlatlistContainer,
+            {marginBottom: tabBarHeight + 10},
+          ]}
           keyExtractor={item => item.id}
           renderItem={({item}) => {
             return (
